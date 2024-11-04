@@ -1,0 +1,14 @@
+@use './theme/dark';
+@use './theme/normal';
+@use './variables/global';
+@use './reset';
+.app{
+    
+    display: block;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    min-height: 100vh;
+    font: var(--font-m);
+
+}
