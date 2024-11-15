@@ -29,6 +29,26 @@ export function buildLoaders(options:BuildOptions): webpack.RuleSetRule[]{
             "sass-loader"
         ]
     } 
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)/,
+        exclude: /node_module/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+            presets: [
+                ['@babel/preset-env', { targets: "defaults" }]
+            ],
+            "plugins": [
+                [
+            "i18next-extract",{
+                "locales": ["ru", "en"],
+                "keyAsDefaultValue": true
+            }
+                ]
+            ]
+            }
+        }
+    }
     const typescriptLoader:webpack.RuleSetRule =
         {
         test: /\.tsx?$/,
@@ -43,5 +63,5 @@ export function buildLoaders(options:BuildOptions): webpack.RuleSetRule[]{
             }
         ]
     }
-    return [typescriptLoader,cssLoaders,svgLoader,fileLoader]
+    return [babelLoader,typescriptLoader,cssLoaders,svgLoader,fileLoader]
 }
