@@ -5,21 +5,21 @@ import { initReactI18next } from 'react-i18next';
 
 
 i18n
-  .use(Backend)
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    fallbackLng: 'ru',
-    debug: true,
+    .use(Backend)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+        fallbackLng: 'ru',
+        debug: __IS_DEV__,
 
-    interpolation: {
-      escapeValue: __IS_DEV__ ? true : false,
-    },
-    backend:{
-      loadPath: '/locales/{{lng}}/{{ns}}.json'
-    }
-    
-  });
+        interpolation: {
+            escapeValue: __IS_DEV__ ? true : false,
+        },
+        backend: {
+            loadPath: '/locales/{{lng}}/{{ns}}.json'
+        }
+
+    });
 
 
 export default i18n;

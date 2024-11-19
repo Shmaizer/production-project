@@ -5,23 +5,22 @@ import { AppRouter } from './provider/router';
 import { Navbar } from 'widgets/NavBar';
 import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
-import { useTranslation } from 'react-i18next';
-
+import React from 'react';
 
 
 function App() {
-  const {theme,toggleTheme} = useTheme();
-  return (
-    <div className={classNames('app',{},[theme,'cls2','cls3'])}>
-      <Suspense fallback="">
-        <Navbar/>
-        <div className="content-page">
-          <Sidebar/>
-          <AppRouter/>
+    const { theme, toggleTheme } = useTheme();
+    return (
+        <div className={classNames('app', {}, [theme, 'cls2', 'cls3'])}>
+            <Suspense fallback="">
+                <Navbar />
+                <div className="content-page">
+                    <Sidebar />
+                    <AppRouter />
+                </div>
+            </Suspense>
         </div>
-      </Suspense>
-    </div>
-  );
+    );
 }
 
 export default App;
